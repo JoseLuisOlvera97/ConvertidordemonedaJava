@@ -8,13 +8,14 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class ConMoneda {
+    //Realizar la conversion de monedas desde la API, introduciendo los valores con variables.
     public ObValorMon BuMoneda (String mon1, String mon2){
         URI direccion = URI.create("https://v6.exchangerate-api.com/v6/c08e4b62e1361a83c5a602f8/pair/" + mon1 + "/" + mon2);
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(direccion)
                 .build();
-
+    //Insertamos un try and catch por si ocurre algun error durante la conversion
         try {
             HttpResponse<String> response = client
                     .send(request, HttpResponse.BodyHandlers.ofString());

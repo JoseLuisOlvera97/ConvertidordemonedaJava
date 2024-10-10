@@ -3,7 +3,6 @@ package Principal;
 import Utilidades.ConMoneda;
 import Utilidades.ObMoneda;
 
-import java.awt.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -12,8 +11,10 @@ public class Main {
         Scanner lectura = new Scanner(System.in);
         ConMoneda obMoneda = new ConMoneda();
         int opcion = 0;
+        //Try and catch para cachar errores.
         try {
             while (opcion != 8){
+                //Menu de nuestro programa, dentro de un ciclo.
                 System.out.println("********************************\n" +
                         "Sea bienvenido al conversor de monedas\n" +
                         "1) Dolar =>> Peso argentino\n" +
@@ -27,11 +28,12 @@ public class Main {
                         "********************************\n");
                 opcion = lectura.nextInt();
                 lectura.nextLine();
-
+                //Utilizamos un if para validar la salida de nuestra aplicacion.
                 if (opcion == 7) {
                     System.out.println("Saliendo");
                     break;
                 }
+                //Opciones en caso de cada seleccion, pasando las variables a la API
                 switch (opcion){
                     case 1:
                         ObMoneda.conv("USD", "ARS",obMoneda ,lectura);
@@ -54,6 +56,7 @@ public class Main {
                         break;
                 }
             }
+            //Validacion para que solo se puedan ingresar numeros.
         }catch(NumberFormatException | InputMismatchException e){
             System.out.println("Ingrese solo numeros");
         }
